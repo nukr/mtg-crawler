@@ -1,0 +1,27 @@
+{
+  "name": "mtg-crawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node --stage 0 index",
+    "dev": "nodemon --exec 'babel-node --stage 0 index'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nukr/mtg-crawler.git"
+  },
+  "author": "nukr",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nukr/mtg-crawler/issues"
+  },
+  "homepage": "https://github.com/nukr/mtg-crawler#readme",
+  "dependencies": {
+    "aws-sdk": "^2.2.4"
+  },
+  "devDependencies": {
+    "nodemon": "^1.7.0"
+  }
+}
