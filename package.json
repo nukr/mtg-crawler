@@ -19,7 +19,11 @@
   },
   "homepage": "https://github.com/nukr/mtg-crawler#readme",
   "dependencies": {
-    "aws-sdk": "^2.2.4"
+    "aws-sdk": "^2.2.4",
+    "cheerio": "^0.19.0"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   },
   "devDependencies": {
     "nodemon": "^1.7.0"
