@@ -6,12 +6,11 @@ import config from './config.js'
 function getBlackLotusSrcPromise () {
   return new Promise((resolve, reject) => {
     http.get('http://magiccards.info/al/en/232.html', res => {
-      let html = null
+      let html = ''
       res.on('data', (chunk) => html += chunk)
       res.on('end', () => {
-        html = html.toString()
         let $ = cheerio.load(html)
-        let $img = $('table').eq(3).find('img').eq(0)
+        let $img = $('table').eq(3).find('img')
         resolve($img.attr('src'))
       })
     })
@@ -28,6 +27,7 @@ function putSrcToS3Promise (src, key) {
         Bucket: 'nukr-images',
         Key: key,
         ContentType: 'jpg',
+        ACL: 'public-read',
         Body: res
       }, (err, data) => {
         if (err) return reject(err)
@@ -41,5 +41,5 @@ async () => {
   let blackLotusSrc = await getBlackLotusSrcPromise()
   let result = await putSrcToS3Promise(blackLotusSrc, 'mtg/black_lotus.jpg')
   console.log(result)
-}()
+}().catch(console.log)
 
