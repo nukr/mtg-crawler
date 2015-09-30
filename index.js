@@ -1,7 +1,7 @@
 import AWS from 'aws-sdk'
 import http from 'http'
 import cheerio from 'cheerio'
-import config from './config.js'
+import config from './config.example.js'
 
 function getBlackLotusSrcPromise () {
   return new Promise((resolve, reject) => {
@@ -20,6 +20,7 @@ function getBlackLotusSrcPromise () {
 function putSrcToS3Promise (src, key) {
   AWS.config.update(config.credentials)
   let s3 = new AWS.S3()
+  console.log(s3)
 
   return new Promise((resolve, reject) => {
     http.get(src, res => {
