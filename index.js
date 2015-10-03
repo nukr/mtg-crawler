@@ -38,8 +38,31 @@ function putSrcToS3Promise (src, key) {
 }
 
 async () => {
+  // TODO getImageName
+  /**
+   * expect shape like
+   * {
+   *   'http://magiccards.info/al/en/232.html': 'al/en/black lotus.jpg'
+   * }
+   *
+   */
+  // let imageName = getImageName(blackLotusSrc)
+  /**
+   * expect shape like
+   * {
+   *   'http://magiccards.info/al/en/232.html': 'al/en/black lotus.jpg',
+   *   'http://magiccards.info/al/en/233.html': 'al/en/black vise.jpg'
+   * }
+   *
+   */
+  // let imageName = getImageName(srcs)
+
+  // let imageNameKeys = Object.keys(imageName)
+  // for (var i = 0, len = imageNameKeys.length; i < len; i++) {
+  //   let result = await putSrcToS3Promise(imageNameKeys[i], imageName[imageNameKeys[i]])
+  // }
   let blackLotusSrc = await getBlackLotusSrcPromise()
-  let result = await putSrcToS3Promise(blackLotusSrc, 'mtg/black_lotus.jpg')
+  let result = await putSrcToS3Promise(blackLotusSrc, 'al/en/black lotus.jpg')
   console.log(result)
 }().catch(console.log)
 
