@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --compilers js:babel/register --timeout 15000",
     "start": "babel-node --stage 0 index",
     "dev": "nodemon --exec 'babel-node --stage 0 index'"
   },
