@@ -12,8 +12,8 @@ async function findCurrentSets () {
   let sets = $('.menu-item > a')
   for (var i = 0, n = sets.length; i < n; i++) {
     let setTitle = sets.eq(i).attr('title')
-    let replacedTitle = setTitle.replace(/ /g, "_")
-    let filterColon = replacedTitle.replace(/:/g, "")
+    let replacedTitle = setTitle.replace(/ /g, '_')
+    let filterColon = replacedTitle.replace(/:/g, '')
     console.log(filterColon)
     setsObject[filterColon] = setTitle
   }
@@ -21,7 +21,7 @@ async function findCurrentSets () {
   return setsObject
 }
 
-function collectSrcOnPage (html) {
+function collectSrcOnPage (html, srcArray) {
   let $ = cheerio.load(html)
   let imgOnPageCount = $('.spoiler-set-card').length
 
@@ -59,7 +59,7 @@ function getPageHtml (url) {
 async function getSetSrc (url) {
   let setSrcArray = []
   let html = await getPageHtml(url)
-  collectSrcOnPage(html)
+  collectSrcOnPage(html, setSrcArray)
   getNextPage(html)
 }
 
